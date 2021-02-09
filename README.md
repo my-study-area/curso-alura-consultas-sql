@@ -13,3 +13,7 @@ docker-compose up -d
 docker exec -i db sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD"' < ./backup.sql
 ```
 
+## Anotações
+**01 - Instalando e configurando o MYSQL**
+- As pequenas diferenças entre os SQL de diferentes bancos de dados relacionais estão nas diferentes funções
+
