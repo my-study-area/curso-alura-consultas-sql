@@ -103,3 +103,23 @@ WHERE SABOR = 'Laranja';
 
 SELECT DISTINCT EMBALAGEM, TAMANHO, SABOR FROM tabela_de_produtos;
 ```
+
+- utilizamos `LIMIT` no SQL para limitar a quantidade de registro na consulta ou o intervalo de valores. Ex:
+```sql
+-- limita a consulta nos 5 primeiros registros
+SELECT * FROM tabela_de_produtos LIMIT 5;
+
+-- limita a consulta, iniciando na linha zero, nos 2 primeiros registros
+-- incluindo a linha zero
+SELECT * FROM tabela_de_produtos LIMIT 0,2;
+```
+Comandos utilizados na aula 03.03 Limitando a saída da consulta:
+```sql
+SELECT * FROM tabela_de_produtos;
+
+SELECT * FROM tabela_de_produtos LIMIT 5;
+
+SELECT * FROM tabela_de_produtos LIMIT 2,3;
+
+SELECT * FROM tabela_de_produtos LIMIT 0,2;
+```
