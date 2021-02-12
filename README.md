@@ -123,3 +123,20 @@ SELECT * FROM tabela_de_produtos LIMIT 2,3;
 
 SELECT * FROM tabela_de_produtos LIMIT 0,2;
 ```
+
+- `ORDER BY` é utilizado para selecionar os registros ordenando por pela coluna(s), podendo ser ascendente (`ASC`) ou descendente (`DESC`)
+
+Comandos utilizados na aula 03.05 Ordenando a saída da consulta:
+```sql
+SELECT * FROM tabela_de_produtos;
+
+SELECT * FROM tabela_de_produtos ORDER BY PRECO_DE_LISTA;
+
+SELECT * FROM tabela_de_produtos ORDER BY PRECO_DE_LISTA DESC;
+
+SELECT * FROM tabela_de_produtos ORDER BY NOME_DO_PRODUTO;
+
+SELECT * FROM tabela_de_produtos ORDER BY NOME_DO_PRODUTO DESC;
+
+SELECT * FROM tabela_de_produtos ORDER BY EMBALAGEM DESC, NOME_DO_PRODUTO ASC;
+```
