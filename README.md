@@ -89,3 +89,17 @@ SELECT * FROM tabela_de_produtos WHERE SABOR LIKE '%Maça%';
 SELECT * FROM tabela_de_produtos WHERE SABOR LIKE '%Maça%'
 AND EMBALAGEM = 'PET';
 ```
+
+**03 - Apresentação dos dados de uma consulta**
+- o comando `DISTINCT` é utilizado para exibir, numa consulta, os registros sem repetição
+Comandos utilizados na aula 3.01 Usando DISTINCT para visualizar a tabela:
+```sql
+SELECT EMBALAGEM, TAMANHO FROM tabela_de_produtos;
+
+SELECT DISTINCT EMBALAGEM, TAMANHO FROM tabela_de_produtos;
+
+SELECT DISTINCT EMBALAGEM, TAMANHO FROM tabela_de_produtos
+WHERE SABOR = 'Laranja';
+
+SELECT DISTINCT EMBALAGEM, TAMANHO, SABOR FROM tabela_de_produtos;
+```
