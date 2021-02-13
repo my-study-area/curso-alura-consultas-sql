@@ -140,3 +140,34 @@ SELECT * FROM tabela_de_produtos ORDER BY NOME_DO_PRODUTO DESC;
 
 SELECT * FROM tabela_de_produtos ORDER BY EMBALAGEM DESC, NOME_DO_PRODUTO ASC;
 ```
+- `GROUP BY` agrupaa linhas por um conjunto de campos e aplicando um critério de agrupamento sobre os campos numéricos (SOMA, MIN, MAX, MÉDIA, etc)
+Comando utilizados na aula 03.07 Agrupando os resultados:
+```sql
+SELECT * FROM tabela_de_clientes;
+
+SELECT ESTADO, LIMITE_DE_CREDITO FROM tabela_de_clientes;
+
+SELECT ESTADO, SUM(LIMITE_DE_CREDITO) AS LIMITE_TOTAL FROM tabela_de_clientes GROUP BY ESTADO;
+
+SELECT EMBALAGEM, PRECO_DE_LISTA FROM tabela_de_produtos;
+
+SELECT EMBALAGEM, MAX(PRECO_DE_LISTA) AS MAIOR_PRECO FROM tabela_de_Produtos GROUP BY EMBALAGEM;
+
+SELECT EMBALAGEM, COUNT(*) AS CONTADOR FROM tabela_de_produtos GROUP BY EMBALAGEM;
+
+SELECT BAIRRO, SUM(LIMITE_DE_CREDITO) AS LIMITE FROM tabela_de_clientes GROUP BY BAIRRO;
+
+SELECT BAIRRO, SUM(LIMITE_DE_CREDITO) AS LIMITE FROM tabela_de_clientes 
+WHERE CIDADE = 'Rio de Janeiro' GROUP BY BAIRRO;
+
+SELECT ESTADO, BAIRRO, SUM(LIMITE_DE_CREDITO) AS LIMITE FROM tabela_de_clientes 
+GROUP BY ESTADO, BAIRRO;
+
+SELECT ESTADO, BAIRRO, SUM(LIMITE_DE_CREDITO) AS LIMITE FROM tabela_de_clientes 
+WHERE CIDADE = 'Rio de Janeiro' GROUP BY ESTADO, BAIRRO;
+
+SELECT ESTADO, BAIRRO, SUM(LIMITE_DE_CREDITO) AS LIMITE FROM tabela_de_clientes 
+WHERE CIDADE = 'Rio de Janeiro' 
+GROUP BY ESTADO, BAIRRO
+ORDER BY BAIRRO;
+```
