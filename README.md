@@ -275,3 +275,23 @@ GROUP BY A.MATRICULA, A.NOME;
   |             2018 | 11022277.617453337 |
   +------------------+--------------------+
   ```
+- `LEFT JOIN` une duas tabelas relacionando a informação de uma coluna em comum nas duas tabelas, normalmente, uma chave estrangeira. E também adiciona os registros da tabela da esquerda
+- `RIGHT JOIN` une duas tabelas relacionando a informação de uma coluna em comum nas duas tabelas, normalmente, uma chave estrangeira. E também adiciona os registros da tabela da direita
+
+Anotações da aula 04.03 Exemplos de LEFT e RIGHT JOIN:
+```sql
+SELECT COUNT(*) FROM TABELA_DE_CLIENTES;
+
+SELECT CPF, COUNT(*) FROM NOTAS_FISCAIS GROUP BY CPF;
+
+SELECT DISTINCT CLI.CPF, CLI.NOME, NF.CPF FROM TABELA_DE_CLIENTES CLI
+INNER JOIN NOTAS_FISCAIS NF ON CLI.CPF = NF.CPF;
+
+SELECT DISTINCT CLI.CPF, CLI.NOME, NF.CPF FROM TABELA_DE_CLIENTES CLI
+LEFT JOIN NOTAS_FISCAIS NF ON CLI.CPF = NF.CPF
+WHERE NF.CPF IS NULL;
+
+SELECT DISTINCT CLI.CPF, CLI.NOME, NF.CPF FROM NOTAS_FISCAIS NF
+RIGHT JOIN TABELA_DE_CLIENTES CLI ON CLI.CPF = NF.CPF
+WHERE NF.CPF IS NULL;
+```
