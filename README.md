@@ -254,3 +254,24 @@ TABELA_DE_VENDEDORES A, NOTAS_FISCAIS B
 WHERE A.MATRICULA = B.MATRICULA
 GROUP BY A.MATRICULA, A.NOME;
 ```
+- Atividade 4.02 Obtendo o faturamento anual:
+
+  Obtenha o faturamento anual da empresa. Leve em consideração que o valor financeiro das vendas consiste em multiplicar a quantidade pelo preço.
+
+  ```sql
+  SELECT 
+    YEAR(DATA_VENDA),
+    SUM(QUANTIDADE * PRECO) AS FATURAMENTO
+  FROM NOTAS_FISCAIS NF 
+  INNER JOIN ITENS_NOTAS_FISCAIS INF ON NF.NUMERO = INF.NUMERO
+  GROUP BY YEAR(DATA_VENDA);
+
+  +------------------+--------------------+
+  | YEAR(DATA_VENDA) | FATURAMENTO        |
+  +------------------+--------------------+
+  |             2015 | 39848262.062838554 |
+  |             2016 |   42362118.2579875 |
+  |             2017 |  44359017.49654484 |
+  |             2018 | 11022277.617453337 |
+  +------------------+--------------------+
+  ```
