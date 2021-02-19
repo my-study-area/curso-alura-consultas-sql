@@ -491,3 +491,15 @@ SELECT SUBSTRING('OLÁ, TUDO BEM?', 6, 4) AS RESULTADO;
 
 SELECT CONCAT(NOME, ' (', CPF, ') ') AS RESULTADO FROM TABELA_DE_CLIENTES;
 ```
+
+Atividade 05.02 Listando o endereço completo
+
+Faça uma consulta listando o nome do cliente e o endereço completo (Com rua, bairro, cidade e estado).
+
+Resposta:
+```sql
+SELECT 
+    CONCAT('Nome: ', NOME) AS NOME,
+    CONCAT('Rua: ', ENDERECO_1, ', Bairro: ', BAIRRO, ', Cidade:', CIDADE, ', Estado:', ESTADO) AS ENDERECO_COMPLETO
+FROM TABELA_DE_CLIENTES;
+```
