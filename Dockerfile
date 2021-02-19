@@ -4,3 +4,4 @@ ENV BACKUP_PATH /backup
 RUN mkdir -p $BACKUP_PATH
 WORKDIR $$BACKUP_PATH
 COPY backup.sql ./
+COPY my.cnf /etc/mysql/
