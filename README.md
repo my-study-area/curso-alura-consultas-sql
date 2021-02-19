@@ -584,3 +584,21 @@ DATE_FORMAT(CURRENT_TIMESTAMP(),'%W, %d/%m/%Y - %U') ) AS RESULTADO;
 
 SELECT SUBSTRING(CONVERT(23.3, CHAR),1,1) AS RESULTADO;
 ```
+
+Atividade da aula 05.08 Listando expressão natural
+Queremos construir um SQL cujo resultado seja, para cada cliente:
+
+`“O cliente João da Silva faturou 120000 no ano de 2016”.`
+
+Somente para o ano de 2016.
+
+Resposta:
+```sql
+SELECT 
+    CONCAT('O cliente ',C.NOME, ' faturou ', FLOOR(SUM(I.QUANTIDADE * I.PRECO)), ' no ano de ', YEAR(NF.DATA_VENDA)) AS FRASE
+FROM NOTAS_FISCAIS NF
+INNER JOIN ITENS_NOTAS_FISCAIS I ON I.NUMERO = NF.NUMERO
+INNER JOIN TABELA_DE_CLIENTES C ON C.CPF = NF.CPF
+WHERE YEAR(NF.DATA_VENDA) = '2016'
+GROUP BY NF.CPF, YEAR(DATA_VENDA);
+```
