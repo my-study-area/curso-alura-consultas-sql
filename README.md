@@ -10,7 +10,7 @@ docker-compose build
 docker-compose up -d
 
 #carrega os registro iniciais
-docker exec -i db sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD"' < ./backup.sql
+docker exec -i db sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD"' < ./sucos_vendas_database.sql
 ```
 
 ## Anotações
