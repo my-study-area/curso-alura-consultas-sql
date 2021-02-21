@@ -711,3 +711,46 @@ FROM (
     GROUP BY NF.CPF, TC.NOME, DATE_FORMAT(NF.DATA_VENDA, '%Y-%m')
 ) X;
 ```
+
+Atividade 06.02 A consulta do relatório
+
+Nesta aula construímos um relatório que apresentou os clientes que tiveram vendas inválidas. Complemente este relatório listando somente os que tiveram vendas inválidas e calculando a diferença entre o limite de venda máximo e o realizado, em percentuais.
+
+Dica:
+
+Capture a SQL final da aula.
+
+Filtre somente as linhas onde
+
+(X.QUANTIDADE_LIMITE - X.QUANTIDADE_VENDAS) < 0
+
+Liste a coluna de X.QUANTIDADE_LIMITE
+
+Crie uma nova coluna fazendo a fórmula:
+
+(1 - (X.QUANTIDADE_LIMITE/X.QUANTIDADE_VENDAS)) * 100
+
+```sql
+SELECT
+    X.CPF,
+    X.NOME,
+    X.MES_ANO,
+    X.QUANTIDADE_VENDAS,
+    X.QUANTIDADE_LIMITE,
+    CASE WHEN (X.QUANTIDADE_LIMITE - X.QUANTIDADE_VENDAS) < 0 THEN 'INVÁLIDA'
+    ELSE 'VÁLIDA' END AS STATUS_VENDA,
+    CONCAT(FLOOR((1 - (X.QUANTIDADE_LIMITE/X.QUANTIDADE_VENDAS)) * 100), '%') AS PERCENT
+FROM (
+    SELECT 
+        NF.CPF,
+        TC.NOME,
+        DATE_FORMAT(NF.DATA_VENDA, '%Y-%m') AS MES_ANO,
+        SUM(INF.QUANTIDADE) AS QUANTIDADE_VENDAS ,
+        MAX(TC.VOLUME_DE_COMPRA) AS QUANTIDADE_LIMITE FROM NOTAS_FISCAIS NF
+    INNER JOIN ITENS_NOTAS_FISCAIS INF ON NF.NUMERO = INF.NUMERO
+    INNER JOIN TABELA_DE_CLIENTES TC ON TC.CPF = NF.CPF
+    GROUP BY NF.CPF, TC.NOME, DATE_FORMAT(NF.DATA_VENDA, '%Y-%m')
+) X WHERE (X.QUANTIDADE_LIMITE - X.QUANTIDADE_VENDAS) < 0;
+
+
+```
