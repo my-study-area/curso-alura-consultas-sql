@@ -614,6 +614,7 @@ GROUP BY NF.CPF, YEAR(DATA_VENDA);
 ```
 
 **06 - Exemplos de relatórios**
+
 Anotações da aula 06.01 Relatório de vendas válidas
 ```sql
 SELECT * FROM ITENS_NOTAS_FISCAIS;
